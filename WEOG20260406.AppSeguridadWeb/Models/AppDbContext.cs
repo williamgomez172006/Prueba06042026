@@ -1,24 +1,26 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-public class AppDbContext : DbContext
+namespace WEOG20260406.AppSeguridadWeb.Models
 {
-    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
-    public DbSet<Usuario> Usuarios { get; set; }
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    public class AppDbContext : DbContext
     {
-        string passwordHash = "$2a$11$hDEUK3aSHfrxt4SDvkV94.BHbSk2dfR8AX0/.puPHXqVDWcPAwyc6";  // Admin123
-        modelBuilder.Entity<Usuario>().HasData(
-            new Usuario
-            {
-                Id = 1,
-                Login = "admin",
-                PasswordHash = passwordHash,
-                Rol = "Administrador",
-                EstaActivo = true
-            }
-        );
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+        public DbSet<Usuario> Usuarios { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            string passwordHash = "$2a$11$hDEUK3aSHfrxt4SDvkV94.BHbSk2dfR8AX0/.puPHXqVDWcPAwyc6";  // Admin123
+            modelBuilder.Entity<Usuario>().HasData(
+                new Usuario
+                {
+                    Id = 1,
+                    Login = "admin",
+                    PasswordHash = passwordHash,
+                    Rol = "Administrador",
+                    EstaActivo = true
+                }
+            );
+        }
     }
 }
-
 
