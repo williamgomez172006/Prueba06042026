@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-
+using WEOG20260406.AppSeguridadWeb.Models; // o donde tengas tu DbContext
 #nullable disable
 
 namespace WEOG20260406.AppSeguridadWeb.Migrations
