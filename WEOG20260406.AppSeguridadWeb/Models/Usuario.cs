@@ -1,39 +1,42 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-[Table("Usuarios")]
-public class Usuario
+namespace WEOG20260406.AppSeguridadWeb.Models
 {
-    [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int Id { get; set; }
+    [Table("Usuarios")]
+    public class Usuario
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
 
-    [Required(ErrorMessage = "El nombre de usuario es obligatorio")]
-    [StringLength(50)]
-    public string Login { get; set; }
+        [Required(ErrorMessage = "El nombre de usuario es obligatorio")]
 
-    [Required(ErrorMessage = "La contraseña es obligatoria")]
-    [StringLength(100)]
-    [DataType(DataType.Password)]
-    [Display(Name = "Contraseña")]
-    public string PasswordHash { get; set; }
+        [StringLength(50)]
+        public string Login { get; set; }
 
-    [NotMapped]
-    [Required(ErrorMessage = "Debe confirmar la contraseña")]
-    [Compare("PasswordHash", ErrorMessage = "Las contraseñas no coinciden")]
-    [StringLength(100)]
-    [DataType(DataType.Password)]
-    [Display(Name = "Confirmar Contraseña")]
-    public string ConfirmarPassword { get; set; }
+        [Required(ErrorMessage = "La contraseña es obligatoria")]
+        [StringLength(100)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Contraseña")]
+        public string PasswordHash { get; set; }
 
-    [Required]
-    [StringLength(20)]
-    [AllowedValues("Administrador", "Editor", "Usuario", ErrorMessage = "Seleccione un rol válido")]
-    public string Rol { get; set; }
+        [NotMapped]
+        [Required(ErrorMessage = "Debe confirmar la contraseña")]
+        [Compare("PasswordHash", ErrorMessage = "Las contraseñas no coinciden")]
+        [StringLength(100)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirmar Contraseña")]
+        public string ConfirmarPassword { get; set; }
 
-    public bool EstaActivo { get; set; } = true;
+        [Required]
+        [StringLength(20)]
+        [AllowedValues("Administrador", "Editor", "Usuario", ErrorMessage = "Seleccione un rol válido")]
+        public string Rol { get; set; }
+
+        public bool EstaActivo { get; set; } = true;
+    }
 }
-
 
 
 
